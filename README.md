@@ -1,4 +1,4 @@
-# 🎉 Final Project OOP - **Hotel Booking System** 🏨
+# 🎉 Final Project OOP - \*\*\*\* 🏨
 
 ![Java](https://img.shields.io/badge/Java-Programming-orange?style=flat-square)
 ![OOP](https://img.shields.io/badge/Object--Oriented-Programming-blue?style=flat-square)
