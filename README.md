@@ -3,7 +3,7 @@
 ![Java](https://img.shields.io/badge/Java-Programming-orange?style=flat-square)
 ![OOP](https://img.shields.io/badge/Object--Oriented-Programming-blue?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
-s
+
 ## 📚 Project Description
 
 ## 🛠️ Main Features
