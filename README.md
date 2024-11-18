@@ -30,5 +30,5 @@
 
 1. Clone this repository to your computer:
    ```bash
-   git clone https://github.com/username/final-project-oop.git
+   git clone BELUM TAU
    ```
