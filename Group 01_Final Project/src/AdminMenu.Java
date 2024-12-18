@@ -37,15 +37,9 @@ public class AdminMenu {
 
     private static void showParkingData() {
         System.out.println("\n--- Data Parking ---");
-        System.out.println("1. Car A - Slot 1");
-        System.out.println("2. Car B - Slot 2");
-        System.out.println("3. Car C - Slot 3");
     }
 
     private static void showMissingCarData() {
         System.out.println("\n--- Data Car Missing ---");
-        System.out.println("1. Car X - Reported Missing");
-        System.out.println("2. Car Y - Reported Missing");
-        System.out.println("3. Car Z - Reported Missing");
     }
 }
