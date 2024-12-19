@@ -89,10 +89,3 @@ This program is the **final project** created by:
 - 📇 Adds and checks members.
 
 ---
-
-## ▶️ How to Run
-
-1. 💻 Compile the program:
-   ```bash
-   javac *.java
-   ```
