@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DetailsParking {
+    private static final int MAX_CAPACITY = 3; // Maximum parking lot capacity
     private List<Car> parkedCars; // A list to hold parked car information
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private Scanner scanner;
@@ -16,6 +17,10 @@ public class DetailsParking {
         // Sample data, you would normally load this from your data storage
         parkedCars.add(new Car("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
         parkedCars.add(new Car("123", "123", "123", "2023-12-19 12:50:01"));
+    }
+
+    public boolean isParkingFull() {
+        return parkedCars.size() >= MAX_CAPACITY;
     }
 
     public void displayCurrentParking() {
@@ -52,6 +57,10 @@ public class DetailsParking {
     }
 
     public void addCar(String plateNumber, String color, String brand, String timeIn) {
+        if (isParkingFull()) {
+            System.out.println("Parking lot is full. Cannot add more cars.");
+            return;
+        }
         try {
             parkedCars.add(new Car(plateNumber, color, brand, timeIn));
         } catch (Exception e) {

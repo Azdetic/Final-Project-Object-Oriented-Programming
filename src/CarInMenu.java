@@ -57,6 +57,12 @@ public class CarInMenu {
                     }
                 } while (carBrand.trim().isEmpty());
 
+                if (detailsParking.isParkingFull()) {
+                    System.out.println("Parking lot is full. Cannot add more cars.");
+                    detailsMenu.showMenu();
+                    return;
+                }
+
                 detailsParking.addCar(plateNumber, carColor, carBrand, getCurrentDateTime());
                 System.out.println("Car added: " + plateNumber + ", " + carColor + ", " + carBrand);
 
