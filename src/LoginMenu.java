@@ -10,19 +10,23 @@ public class LoginMenu {
     public void displayLogin() {
         boolean loginSuccessful = false;
         while (!loginSuccessful) {
-            System.out.println("=========== Menu Login ===========");
-            System.out.print("Username: ");
-            String username = scanner.nextLine();
-            System.out.print("Password: ");
-            String password = scanner.nextLine();
+            try {
+                System.out.println("=========== Menu Login ===========");
+                System.out.print("Username: ");
+                String username = scanner.nextLine();
+                System.out.print("Password: ");
+                String password = scanner.nextLine();
 
-            if (username.equals("admin") && password.equals("admin")) {
-                System.out.println("Login successful!");
-                DetailsMenu detailsMenu = new DetailsMenu();
-                detailsMenu.showMenu();
-                loginSuccessful = true;
-            } else {
-                System.out.println("Wrong username or password!");
+                if (username.equals("admin") && password.equals("admin")) {
+                    System.out.println("Login successful!");
+                    DetailsMenu detailsMenu = new DetailsMenu();
+                    detailsMenu.showMenu();
+                    loginSuccessful = true;
+                } else {
+                    System.out.println("Wrong username or password!");
+                }
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
             }
         }
     }

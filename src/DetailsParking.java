@@ -19,48 +19,69 @@ public class DetailsParking {
     }
 
     public void displayCurrentParking() {
-        System.out.println("=========== Details Current Parking ===========");
-        int count = 1;
-        for (Car car : parkedCars) {
-            System.out.println("==== " + count + " ====");
-            System.out.println("Plate Number: " + car.getPlateNumber());
-            System.out.println("Car Color: " + car.getColor());
-            System.out.println("Car Brand: " + car.getBrand());
-            System.out.println("Time In: " + car.getTimeIn());
-            System.out.println("Current Price: " + car.calculateCurrentPrice() + " IDR");
-            count++;
+        try {
+            System.out.println("=========== Details Current Parking ===========");
+            int count = 1;
+            for (Car car : parkedCars) {
+                System.out.println("==== " + count + " ====");
+                System.out.println("Plate Number: " + car.getPlateNumber());
+                System.out.println("Car Color: " + car.getColor());
+                System.out.println("Car Brand: " + car.getBrand());
+                System.out.println("Time In: " + car.getTimeIn());
+                System.out.println("Current Price: " + car.calculateCurrentPrice() + " IDR");
+                count++;
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
     }
 
     public void checkParkingData() {
         String response;
         do {
-            displayCurrentParking();
-            do {
-                System.out.print("Still want to check data? (y/n): ");
-                response = scanner.nextLine();
-                if (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
-                    System.out.println("Invalid choice. Please enter 'y' or 'n'.");
-                }
-            } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
+            try {
+                displayCurrentParking();
+                do {
+                    System.out.print("Still want to check data? (y/n): ");
+                    response = scanner.nextLine();
+                    if (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
+                        System.out.println("Invalid choice. Please enter 'y' or 'n'.");
+                    }
+                } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
+                response = "n"; // Exit the loop in case of an error
+            }
         } while (response.equalsIgnoreCase("y"));
     }
 
     public void addCar(String plateNumber, String color, String brand, String timeIn) {
-        parkedCars.add(new Car(plateNumber, color, brand, timeIn));
+        try {
+            parkedCars.add(new Car(plateNumber, color, brand, timeIn));
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
     public Car findCarByPlateNumber(String plateNumber) {
-        for (Car car : parkedCars) {
-            if (car.getPlateNumber().equals(plateNumber)) {
-                return car;
+        try {
+            for (Car car : parkedCars) {
+                if (car.getPlateNumber().equals(plateNumber)) {
+                    return car;
+                }
             }
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
         return null;
     }
 
     public void removeCar(String plateNumber) {
-        parkedCars.removeIf(car -> car.getPlateNumber().equals(plateNumber));
+        try {
+            parkedCars.removeIf(car -> car.getPlateNumber().equals(plateNumber));
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
     public class Car {
@@ -93,10 +114,15 @@ public class DetailsParking {
         }
 
         public long calculateCurrentPrice() {
-            LocalDateTime timeInLocal = LocalDateTime.parse(timeIn, formatter);
-            LocalDateTime now = LocalDateTime.now();
-            long minutesBetween = ChronoUnit.MINUTES.between(timeInLocal, now);
-            return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000; // No charge for less than 5 minutes
+            try {
+                LocalDateTime timeInLocal = LocalDateTime.parse(timeIn, formatter);
+                LocalDateTime now = LocalDateTime.now();
+                long minutesBetween = ChronoUnit.MINUTES.between(timeInLocal, now);
+                return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000; // No charge for less than 5 minutes
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
+                return 0;
+            }
         }
     }
 }
