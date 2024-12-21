@@ -20,10 +20,11 @@ public class MemberDataMenu {
             System.out.println("1. Check Member");
             System.out.println("2. Register Member");
             System.out.println("3. List Member");
-            System.out.println("4. Back");
+            System.out.println("4. Delete Member");
+            System.out.println("5. Back");
             System.out.print("Enter your choice: ");
             while (!scanner.hasNextInt()) {
-                System.out.print("Invalid choice, choose 1-4: ");
+                System.out.print("Invalid choice, choose 1-5: ");
                 scanner.next(); // Consume invalid input
             }
             choice = scanner.nextInt();
@@ -40,12 +41,40 @@ public class MemberDataMenu {
                     listMembers();
                     break;
                 case 4:
-                    System.out.println("Returning to main menu...");
+                    deleteMember();
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
                     break;
                 default:
-                    System.out.println("Invalid choice, choose 1-4:");
+                    System.out.println("Invalid choice, choose 1-5.");
             }
-        } while (choice != 4);
+        } while (choice != 5);
+    }
+
+    private void deleteMember() {
+        System.out.print("Enter phone number: ");
+        String phoneNumber = scanner.nextLine();
+        Member memberToDelete = null;
+        for (Member member : members) {
+            if (member.getPhoneNumber().equals(phoneNumber)) {
+                memberToDelete = member;
+                break;
+            }
+        }
+        if (memberToDelete != null) {
+            System.out.println("Member found: " + memberToDelete.getName());
+            System.out.print("Is this information correct? (y/n): ");
+            String confirmation = scanner.nextLine();
+            if (confirmation.equalsIgnoreCase("y")) {
+                members.remove(memberToDelete);
+                System.out.println("Member deleted successfully.");
+            } else {
+                System.out.println("Deletion cancelled.");
+            }
+        } else {
+            System.out.println("Member not found.");
+        }
     }
 
     private void checkMember() {
