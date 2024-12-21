@@ -63,7 +63,8 @@ public class CarInMenu {
                     return;
                 }
 
-                detailsParking.addCar(plateNumber, carColor, carBrand, getCurrentDateTime());
+                Car car = new Car(plateNumber, carColor, carBrand, getCurrentDateTime());
+                detailsParking.addCar(car.getPlateNumber(), car.getCarColor(), car.getCarBrand(), car.getEntryTime());
                 System.out.println("Car added: " + plateNumber + ", " + carColor + ", " + carBrand);
 
                 do {

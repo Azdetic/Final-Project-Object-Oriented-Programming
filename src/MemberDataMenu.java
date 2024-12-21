@@ -10,7 +10,7 @@ public class MemberDataMenu {
         this.scanner = new Scanner(System.in);
         this.members = new ArrayList<>();
         // Add sample member data
-        members.add(new Member("123", "Wira"));
+        members.add(new RegularMember("123", "Wira"));
     }
 
     public void show() {
@@ -115,7 +115,7 @@ public class MemberDataMenu {
         System.out.print("Name: ");
         String name = scanner.nextLine();
 
-        members.add(new Member(phoneNumber, name));
+        members.add(new RegularMember(phoneNumber, name));
         System.out.println("Member registered: " + name + " (" + phoneNumber + ")");
     }
 
@@ -141,7 +141,7 @@ public class MemberDataMenu {
         return findMemberByPhoneNumber(phoneNumber) != null;
     }
 
-    public class Member {
+    public abstract class Member {
         private String phoneNumber;
         private String name;
 
@@ -161,6 +161,12 @@ public class MemberDataMenu {
         @Override
         public String toString() {
             return name + " (" + phoneNumber + ")";
+        }
+    }
+
+    public class RegularMember extends Member {
+        public RegularMember(String phoneNumber, String name) {
+            super(phoneNumber, name);
         }
     }
 }

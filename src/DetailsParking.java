@@ -15,8 +15,8 @@ public class DetailsParking {
         this.parkedCars = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         // Sample data, you would normally load this from your data storage
-        parkedCars.add(new Car("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
-        parkedCars.add(new Car("123", "123", "123", "2023-12-19 12:50:01"));
+        parkedCars.add(new RegularCar("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
+        parkedCars.add(new RegularCar("123", "123", "123", "2023-12-19 12:50:01"));
     }
 
     public boolean isParkingFull() {
@@ -62,7 +62,7 @@ public class DetailsParking {
             return;
         }
         try {
-            parkedCars.add(new Car(plateNumber, color, brand, timeIn));
+            parkedCars.add(new RegularCar(plateNumber, color, brand, timeIn));
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
@@ -93,7 +93,7 @@ public class DetailsParking {
         parkedCars.remove(car);
     }
 
-    public class Car {
+    public abstract class Car {
         private String plateNumber;
         private String color;
         private String brand;
@@ -132,6 +132,12 @@ public class DetailsParking {
                 System.out.println("An error occurred: " + e.getMessage());
                 return 0;
             }
+        }
+    }
+
+    public class RegularCar extends Car {
+        public RegularCar(String plateNumber, String color, String brand, String timeIn) {
+            super(plateNumber, color, brand, timeIn);
         }
     }
 }
