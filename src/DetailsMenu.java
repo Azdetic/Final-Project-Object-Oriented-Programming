@@ -4,11 +4,13 @@ public class DetailsMenu {
     private Scanner scanner;
     private DetailsParking detailsParking;
     private MemberDataMenu memberDataMenu;
+    private double userBalance;
 
-    public DetailsMenu() {
-        scanner = new Scanner(System.in);
-        detailsParking = new DetailsParking();
-        memberDataMenu = new MemberDataMenu();
+    public DetailsMenu(double userBalance) {
+        this.userBalance = userBalance;
+        this.scanner = new Scanner(System.in);
+        this.detailsParking = new DetailsParking();
+        this.memberDataMenu = new MemberDataMenu();
     }
 
     public void showMenu() {
@@ -31,7 +33,7 @@ public class DetailsMenu {
                         carInMenu.show();
                         break;
                     case 2:
-                        CarOutMenu carOutMenu = new CarOutMenu(detailsParking, memberDataMenu, this);
+                        CarOutMenu carOutMenu = new CarOutMenu(this, detailsParking, memberDataMenu);
                         carOutMenu.show();
                         break;
                     case 3:
@@ -39,6 +41,9 @@ public class DetailsMenu {
                         break;
                     case 4:
                         memberDataMenu.show();
+                        break;
+                    case 0:
+                        System.out.println("Exiting...");
                         break;
                     default:
                         System.out.println("Invalid choice, choose 0-4:");
@@ -48,5 +53,13 @@ public class DetailsMenu {
                 choice = 0; // Exit the loop in case of an error
             }
         }
+    }
+
+    public double getUserBalance() {
+        return userBalance;
+    }
+
+    public void setUserBalance(double userBalance) {
+        this.userBalance = userBalance;
     }
 }

@@ -41,13 +41,8 @@ public class DetailsParking {
         do {
             try {
                 displayCurrentParking();
-                do {
-                    System.out.print("Still want to check data? (y/n): ");
-                    response = scanner.nextLine();
-                    if (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
-                        System.out.println("Invalid choice. Please enter 'y' or 'n'.");
-                    }
-                } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
+                System.out.print("Enter to Main Menu: ");
+                response = scanner.nextLine();
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
                 response = "n"; // Exit the loop in case of an error
