@@ -9,7 +9,7 @@ public class MemberDataMenu {
     public MemberDataMenu() {
         this.scanner = new Scanner(System.in);
         this.members = new ArrayList<>();
-        // Add sample member data
+        //add sample member data
         members.add(new RegularMember("123", "Wira"));
     }
 
@@ -25,10 +25,10 @@ public class MemberDataMenu {
             System.out.print("Enter your choice: ");
             while (!scanner.hasNextInt()) {
                 System.out.print("Invalid choice, choose 1-5: ");
-                scanner.next(); // Consume invalid input
+                scanner.next(); //consume invalid input
             }
             choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline left-over
+            scanner.nextLine(); //consume newline left-over
 
             switch (choice) {
                 case 1:

@@ -26,10 +26,10 @@ public class DetailsMenu {
                 System.out.print("Enter your choice: ");
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline left-over
+                    scanner.nextLine(); //consume newline left-over
                 } else {
                     System.out.println("Invalid choice, choose 0-4:");
-                    scanner.next(); // Consume invalid input
+                    scanner.next(); //consume invalid input
                     continue;
                 }
 
@@ -56,7 +56,7 @@ public class DetailsMenu {
                 }
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
-                choice = 0; // Exit the loop in case of an error
+                choice = 0; //exit the loop in case of an error
             }
         }
     }

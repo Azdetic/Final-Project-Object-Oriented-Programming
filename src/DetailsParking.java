@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DetailsParking {
-    private static final int MAX_CAPACITY = 3; // Maximum parking lot capacity
-    private List<Car> parkedCars; // A list to hold parked car information
+    private static final int MAX_CAPACITY = 3; //maximum parking lot capacity
+    private List<Car> parkedCars; //a list to hold parked car information
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private Scanner scanner;
 
     public DetailsParking() {
         this.parkedCars = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        // Sample data, you would normally load this from your data storage
+        //sample data, you would normally load this from your data storage
         parkedCars.add(new RegularCar("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
         parkedCars.add(new RegularCar("123", "123", "123", "2023-12-19 12:50:01"));
     }
@@ -51,7 +51,7 @@ public class DetailsParking {
                 response = scanner.nextLine();
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
-                response = "n"; // Exit the loop in case of an error
+                response = "n"; //exit the loop in case of an error
             }
         } while (response.equalsIgnoreCase("y"));
     }
@@ -127,7 +127,7 @@ public class DetailsParking {
                 LocalDateTime timeInLocal = LocalDateTime.parse(timeIn, formatter);
                 LocalDateTime now = LocalDateTime.now();
                 long minutesBetween = ChronoUnit.MINUTES.between(timeInLocal, now);
-                return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000; // No charge for less than 5 minutes
+                return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000; //no charge for less than 5 minutes
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
                 return 0;
