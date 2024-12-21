@@ -24,8 +24,14 @@ public class DetailsMenu {
                 System.out.println("4. Member Data");
                 System.out.println("0. Exit");
                 System.out.print("Enter your choice: ");
-                choice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline left-over
+                if (scanner.hasNextInt()) {
+                    choice = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
+                } else {
+                    System.out.println("Invalid choice, choose 0-4:");
+                    scanner.next(); // Consume invalid input
+                    continue;
+                }
 
                 switch (choice) {
                     case 1:

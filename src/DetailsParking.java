@@ -79,6 +79,10 @@ public class DetailsParking {
         }
     }
 
+    public void removeCar(Car car) {
+        parkedCars.remove(car);
+    }
+
     public class Car {
         private String plateNumber;
         private String color;

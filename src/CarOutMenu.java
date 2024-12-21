@@ -72,6 +72,7 @@ public class CarOutMenu {
                             if (response.equalsIgnoreCase("y")) {
                                 validMember = true;
                                 // Process payment and remove car from parking
+                                detailsParking.removeCar(car); // Add this line to remove the car
                                 System.out.println("Payment successful. Car removed from parking.");
                                 return; // Direct to Main Menu
                             } else if (response.equalsIgnoreCase("n")) {
@@ -88,6 +89,7 @@ public class CarOutMenu {
                 // Process payment and remove car from parking without member
                 if (detailsMenu.getUserBalance() >= currentPrice) {
                     detailsMenu.setUserBalance(detailsMenu.getUserBalance() - currentPrice);
+                    detailsParking.removeCar(car); // Add this line to remove the car
                     System.out.println("Payment successful. Car removed from parking.");
                     System.out.println("Remaining balance: " + detailsMenu.getUserBalance() + " IDR");
                 } else {
