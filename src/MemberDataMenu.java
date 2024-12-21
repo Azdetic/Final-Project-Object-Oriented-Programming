@@ -44,10 +44,10 @@ public class MemberDataMenu {
                     deleteMember();
                     break;
                 case 5:
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting..");
                     break;
                 default:
-                    System.out.println("Invalid choice, choose 1-5.");
+                    System.out.println("Invalid choice, choose 1-5");
             }
         } while (choice != 5);
     }
@@ -68,12 +68,12 @@ public class MemberDataMenu {
             String confirmation = scanner.nextLine();
             if (confirmation.equalsIgnoreCase("y")) {
                 members.remove(memberToDelete);
-                System.out.println("Member deleted successfully.");
+                System.out.println("Member deleted successfully");
             } else {
-                System.out.println("Deletion cancelled.");
+                System.out.println("Deletion cancelled");
             }
         } else {
-            System.out.println("Member not found.");
+            System.out.println("Member not found");
         }
     }
 

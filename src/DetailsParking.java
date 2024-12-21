@@ -15,7 +15,7 @@ public class DetailsParking {
         this.scanner = new Scanner(System.in);
         // Sample data, you would normally load this from your data storage
         parkedCars.add(new Car("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
-        parkedCars.add(new Car("XY789ZT", "Blue", "Honda", "2023-12-19 12:50:01"));
+        parkedCars.add(new Car("123", "123", "123", "2023-12-19 12:50:01"));
     }
 
     public void displayCurrentParking() {
@@ -28,7 +28,8 @@ public class DetailsParking {
                 System.out.println("Car Color: " + car.getColor());
                 System.out.println("Car Brand: " + car.getBrand());
                 System.out.println("Time In: " + car.getTimeIn());
-                System.out.println("Current Price: " + car.calculateCurrentPrice() + " IDR");
+                double currentPrice = car.calculateCurrentPrice();
+                System.out.println("Current Price: " + currentPrice + " IDR | Using member discount 50%: " + (currentPrice * 0.5) + " IDR");
                 count++;
             }
         } catch (Exception e) {

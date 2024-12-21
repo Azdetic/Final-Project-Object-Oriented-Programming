@@ -29,7 +29,7 @@ public class LoginMenu {
                     System.out.println("Wrong username or password!");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid balance input. Please enter a valid number.");
+                System.out.println("Invalid balance input. Please enter a valid number");
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
             }

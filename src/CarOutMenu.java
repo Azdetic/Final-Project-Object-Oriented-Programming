@@ -24,7 +24,7 @@ public class CarOutMenu {
                     System.out.print("Input Plate: ");
                     plateNumber = scanner.nextLine();
                     if (plateNumber.trim().isEmpty()) {
-                        System.out.println("Do not leave blank data, it cannot be processed.");
+                        System.out.println("Do not leave blank data, it cannot be processed");
                         detailsMenu.showMenu();
                         return;
                     }
@@ -32,12 +32,12 @@ public class CarOutMenu {
 
                 car = detailsParking.findCarByPlateNumber(plateNumber);
                 if (car == null) {
-                    System.out.println("Data not found, please enter new data.");
+                    System.out.println("Data not found, please enter new data");
                     do {
                         System.out.print("Want to check plate number in parking details? (y/n): ");
                         response = scanner.nextLine();
                         if (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
-                            System.out.println("Invalid choice. Please enter 'y' or 'n'.");
+                            System.out.println("Invalid choice. Please enter 'y' or 'n'");
                         }
                     } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
 
@@ -48,13 +48,13 @@ public class CarOutMenu {
             } while (car == null);
 
             long currentPrice = car.calculateCurrentPrice();
-            System.out.println("Current Price: " + currentPrice + " IDR");
+            System.out.println("Current Price: " + currentPrice + " IDR | Using member discount 50%: " + (currentPrice * 0.5) + " IDR");
 
             do {
                 System.out.print("Payment using member? (y/n): ");
                 response = scanner.nextLine();
                 if (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
-                    System.out.println("Invalid choice. Please enter 'y' or 'n'.");
+                    System.out.println("Invalid choice. Please enter 'y' or 'n'");
                 }
             } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
 
@@ -66,6 +66,8 @@ public class CarOutMenu {
                     MemberDataMenu.Member member = memberDataMenu.findMemberByPhoneNumber(phoneNumber);
                     if (member != null) {
                         System.out.println("Member found: " + member);
+                        System.out.println("Current Balance: " + detailsMenu.getUserBalance() + " IDR");
+                        System.out.println("Total Price discount 50%: " + (currentPrice * 0.5) + " IDR");
                         do {
                             System.out.print("Is this information correct? (y/n): ");
                             response = scanner.nextLine();
@@ -73,29 +75,43 @@ public class CarOutMenu {
                                 validMember = true;
                                 // Process payment and remove car from parking
                                 detailsParking.removeCar(car); // Add this line to remove the car
-                                System.out.println("Payment successful. Car removed from parking.");
+                                System.out.println("Payment successful. Car removed from parking");
                                 return; // Direct to Main Menu
                             } else if (response.equalsIgnoreCase("n")) {
-                                System.out.println("Please re-enter the member phone number.");
+                                System.out.println("Please re-enter the member phone number");
                             } else {
-                                System.out.println("Invalid choice. Please enter 'y' or 'n'.");
+                                System.out.println("Invalid choice. Please enter 'y' or 'n'");
                             }
                         } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
                     } else {
-                        System.out.println("Member not found. Please try again.");
+                        System.out.println("Member not found. Please try again");
                     }
                 } while (!validMember);
             } else {
                 // Process payment and remove car from parking without member
-                if (detailsMenu.getUserBalance() >= currentPrice) {
-                    detailsMenu.setUserBalance(detailsMenu.getUserBalance() - currentPrice);
-                    detailsParking.removeCar(car); // Add this line to remove the car
-                    System.out.println("Payment successful. Car removed from parking.");
-                    System.out.println("Remaining balance: " + detailsMenu.getUserBalance() + " IDR");
-                } else {
-                    System.out.println("Insufficient balance. Payment failed.");
-                }
-                return; // Direct to Main Menu
+                System.out.println("Current Balance: " + detailsMenu.getUserBalance() + " IDR");
+                System.out.println("Total Price: " + currentPrice + " IDR");
+                do {
+                    System.out.print("Do you want to make member first? (y/n): ");
+                    response = scanner.nextLine();
+                    if (response.equalsIgnoreCase("y")) {
+                        // Logic to create a new member
+                        System.out.println("Please proceed to create a new member");
+                        // Add member creation logic here
+                    } else if (response.equalsIgnoreCase("n")) {
+                        if (detailsMenu.getUserBalance() >= currentPrice) {
+                            detailsMenu.setUserBalance(detailsMenu.getUserBalance() - currentPrice);
+                            detailsParking.removeCar(car); // Add this line to remove the car
+                            System.out.println("Payment successful. Car removed from parking");
+                            System.out.println("Remaining balance: " + detailsMenu.getUserBalance() + " IDR");
+                        } else {
+                            System.out.println("Insufficient balance. Payment failed");
+                        }
+                        return; // Direct to Main Menu
+                    } else {
+                        System.out.println("Invalid choice. Please enter 'y' or 'n'");
+                    }
+                } while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n"));
             }
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
