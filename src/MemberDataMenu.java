@@ -55,6 +55,11 @@ public class MemberDataMenu {
     private void deleteMember() {
         System.out.print("Enter phone number: ");
         String phoneNumber = scanner.nextLine();
+        if (phoneNumber.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            show();
+            return;
+        }
         Member memberToDelete = null;
         for (Member member : members) {
             if (member.getPhoneNumber().equals(phoneNumber)) {
