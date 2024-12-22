@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DetailsParking {
-    private static final int MAX_CAPACITY = 3; //maximum parking lot capacity
+    private static final int MAX_CAPACITY = 4; //maximum parking lot capacity
     private List<Car> parkedCars; //a list to hold parked car information
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private Scanner scanner;

@@ -21,7 +21,7 @@ public class LoginMenu {
                 if (username.equals("admin") && password.equals("admin")) {
                     System.out.print("Enter your balance: ");
                     userBalance = Double.parseDouble(scanner.nextLine());
-                    System.out.println("Login successful");
+                    System.out.println("Login successful!");
                     DetailsMenu detailsMenu = new DetailsMenu(userBalance);
                     detailsMenu.showMenu();
                     loginSuccessful = true;
