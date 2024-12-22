@@ -14,7 +14,7 @@ public class DetailsParking {
     public DetailsParking() {
         this.parkedCars = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        //sample data, you would normally load this from your data storage
+        //sample data
         parkedCars.add(new RegularCar("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
         parkedCars.add(new RegularCar("Test", "Blue", "Honda", "2023-12-22 12:50:01"));
     }

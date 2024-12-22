@@ -1,4 +1,3 @@
-
 public class Car {
     private String plateNumber;
     private String carColor;
