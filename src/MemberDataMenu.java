@@ -105,16 +105,23 @@ public class MemberDataMenu {
         System.out.println("=========== Register Member ===========");
         System.out.print("Phone Number: ");
         String phoneNumber = scanner.nextLine();
-        
+        if (phoneNumber.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            show();
+            return;
+        }
         Member existingMember = findMemberByPhoneNumber(phoneNumber);
         if (existingMember != null) {
             System.out.println("Number already registered with name: " + existingMember.getName());
             return;
         }
-
         System.out.print("Name: ");
         String name = scanner.nextLine();
-
+        if (name.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            show();
+            return;
+        }
         members.add(new RegularMember(phoneNumber, name));
         System.out.println("Member registered: " + name + " (" + phoneNumber + ")");
     }
