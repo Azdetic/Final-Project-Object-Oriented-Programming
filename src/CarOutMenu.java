@@ -73,10 +73,17 @@ public class CarOutMenu {
                             response = scanner.nextLine();
                             if (response.equalsIgnoreCase("y")) {
                                 validMember = true;
-                                //process payment and remove car from parking
-                                detailsParking.removeCar(car); //add this line to remove the car
-                                System.out.println("Payment successful. Car removed from parking");
-                                return; //direct to Main Menu
+                                //check balance and subtract the discounted price
+                                long discountedPrice = (long)(currentPrice * 0.5);
+                                if (detailsMenu.getUserBalance() >= discountedPrice) {
+                                    detailsMenu.setUserBalance(detailsMenu.getUserBalance() - discountedPrice);
+                                    detailsParking.removeCar(car);
+                                    System.out.println("Payment successful. Car removed from parking");
+                                    System.out.println("Remaining balance: " + detailsMenu.getUserBalance() + " IDR");
+                                    return;
+                                } else {
+                                    System.out.println("Insufficient balance. Payment failed");
+                                }
                             } else if (response.equalsIgnoreCase("n")) {
                                 System.out.println("Please re-enter the member phone number");
                             } else {

@@ -15,8 +15,10 @@ public class DetailsParking {
         this.parkedCars = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         //sample data
-        parkedCars.add(new RegularCar("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
-        parkedCars.add(new RegularCar("Test", "Blue", "Honda", "2023-12-22 12:50:01"));
+        parkedCars.add(new RegularCar("Testing 1", "Red", "Toyota", "2024-12-19 12:34:56"));
+        parkedCars.add(new RegularCar("Testing 2", "Blue", "Honda", "2024-12-22 14:50:01"));
+        parkedCars.add(new RegularCar("Testing 3", "Blue", "Honda", "2024-12-22 14:50:01"));
+
     }
 
     public boolean isParkingFull() {
