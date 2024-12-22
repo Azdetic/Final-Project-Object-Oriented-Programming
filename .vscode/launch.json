@@ -9,6 +9,13 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",
+      "projectName": "TUBESE ORIENTER PROGRAM_16f8105c"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
       "projectName": "Tubes OOP_a928ef7b"
     }
   ]

@@ -10,7 +10,7 @@ public class MemberDataMenu {
         this.scanner = new Scanner(System.in);
         this.members = new ArrayList<>();
         //add sample member data
-        members.add(new RegularMember("123", "Wira"));
+        members.add(new RegularMember("123", "Group 1"));
     }
 
     public void show() {
