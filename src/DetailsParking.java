@@ -1,12 +1,11 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class DetailsParking {
-    private static final int MAX_CAPACITY = 3; //maximum parking lot capacity
+    private static final int MAX_CAPACITY = 4; //maximum parking lot capacity
     private List<Car> parkedCars; //a list to hold parked car information
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private Scanner scanner;
@@ -14,9 +13,10 @@ public class DetailsParking {
     public DetailsParking() {
         this.parkedCars = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        //sample data, you would normally load this from your data storage
-        parkedCars.add(new RegularCar("AB123CD", "Red", "Toyota", "2023-12-19 12:34:56"));
-        parkedCars.add(new RegularCar("123", "123", "123", "2023-12-19 12:50:01"));
+        //sample data
+        parkedCars.add(new RegularCar("Testing 1", "Red", "Toyota", "2024-12-19 12:34:56"));
+        parkedCars.add(new RegularCar("Testing 2", "Blue", "Honda", "2024-12-22 14:50:01"));
+        parkedCars.add(new RegularCar("Testing 3", "Blue", "Honda", "2024-12-22 14:50:01"));
     }
 
     public boolean isParkingFull() {
@@ -58,7 +58,7 @@ public class DetailsParking {
 
     public void addCar(String plateNumber, String color, String brand, String timeIn) {
         if (isParkingFull()) {
-            System.out.println("Parking lot is full. Cannot add more cars.");
+            System.out.println("Parking lot is full. Cannot add more cars");
             return;
         }
         try {
@@ -91,48 +91,6 @@ public class DetailsParking {
 
     public void removeCar(Car car) {
         parkedCars.remove(car);
-    }
-
-    public abstract class Car {
-        private String plateNumber;
-        private String color;
-        private String brand;
-        private String timeIn;
-
-        public Car(String plateNumber, String color, String brand, String timeIn) {
-            this.plateNumber = plateNumber;
-            this.color = color;
-            this.brand = brand;
-            this.timeIn = timeIn;
-        }
-
-        public String getPlateNumber() {
-            return plateNumber;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public String getBrand() {
-            return brand;
-        }
-
-        public String getTimeIn() {
-            return timeIn;
-        }
-
-        public long calculateCurrentPrice() {
-            try {
-                LocalDateTime timeInLocal = LocalDateTime.parse(timeIn, formatter);
-                LocalDateTime now = LocalDateTime.now();
-                long minutesBetween = ChronoUnit.MINUTES.between(timeInLocal, now);
-                return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000; //no charge for less than 5 minutes
-            } catch (Exception e) {
-                System.out.println("An error occurred: " + e.getMessage());
-                return 0;
-            }
-        }
     }
 
     public class RegularCar extends Car {

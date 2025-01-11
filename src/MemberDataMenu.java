@@ -10,7 +10,7 @@ public class MemberDataMenu {
         this.scanner = new Scanner(System.in);
         this.members = new ArrayList<>();
         //add sample member data
-        members.add(new RegularMember("123", "Wira"));
+        members.add(new RegularMember("123", "Group 1"));
     }
 
     public void show() {
@@ -55,6 +55,10 @@ public class MemberDataMenu {
     private void deleteMember() {
         System.out.print("Enter phone number: ");
         String phoneNumber = scanner.nextLine();
+        if (phoneNumber.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            return;
+        }
         Member memberToDelete = null;
         for (Member member : members) {
             if (member.getPhoneNumber().equals(phoneNumber)) {
@@ -105,16 +109,21 @@ public class MemberDataMenu {
         System.out.println("=========== Register Member ===========");
         System.out.print("Phone Number: ");
         String phoneNumber = scanner.nextLine();
-        
+        if (phoneNumber.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            return;
+        }
         Member existingMember = findMemberByPhoneNumber(phoneNumber);
         if (existingMember != null) {
             System.out.println("Number already registered with name: " + existingMember.getName());
             return;
         }
-
         System.out.print("Name: ");
         String name = scanner.nextLine();
-
+        if (name.trim().isEmpty()) {
+            System.out.println("Do not blank, data cannot be process");
+            return;
+        }
         members.add(new RegularMember(phoneNumber, name));
         System.out.println("Member registered: " + name + " (" + phoneNumber + ")");
     }
@@ -139,29 +148,6 @@ public class MemberDataMenu {
 
     public boolean isMember(String phoneNumber) {
         return findMemberByPhoneNumber(phoneNumber) != null;
-    }
-
-    public abstract class Member {
-        private String phoneNumber;
-        private String name;
-
-        public Member(String phoneNumber, String name) {
-            this.phoneNumber = phoneNumber;
-            this.name = name;
-        }
-
-        public String getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public String toString() {
-            return name + " (" + phoneNumber + ")";
-        }
     }
 
     public class RegularMember extends Member {

@@ -26,10 +26,10 @@ public class DetailsMenu {
                 System.out.print("Enter your choice: ");
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
-                    scanner.nextLine(); //consume newline left-over
+                    scanner.nextLine();
                 } else {
                     System.out.println("Invalid choice, choose 0-4:");
-                    scanner.next(); //consume invalid input
+                    scanner.next();
                     continue;
                 }
 

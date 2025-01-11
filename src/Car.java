@@ -1,48 +1,46 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Car {
     private String plateNumber;
-    private String carColor;
-    private String carBrand;
-    private String entryTime;
+    private String color;
+    private String brand;
+    private String timeIn;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-
-
-    public Car(String plateNumber, String carColor, String carBrand, String entryTime) {
+    public Car(String plateNumber, String color, String brand, String timeIn) {
         this.plateNumber = plateNumber;
-        this.carColor = carColor;
-        this.carBrand = carBrand;
-        this.entryTime = entryTime;
+        this.color = color;
+        this.brand = brand;
+        this.timeIn = timeIn;
     }
 
     public String getPlateNumber() {
         return plateNumber;
     }
 
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
+    public String getColor() {
+        return color;
     }
 
-    public String getCarColor() {
-        return carColor;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setCarColor(String carColor) {
-        this.carColor = carColor;
+    public String getTimeIn() {
+        return timeIn;
     }
 
-    public String getCarBrand() {
-        return carBrand;
-    }
-
-    public void setCarBrand(String carBrand) {
-        this.carBrand = carBrand;
-    }
-
-    public String getEntryTime() {
-        return entryTime;
-    }
-
-    public void setEntryTime(String entryTime) {
-        this.entryTime = entryTime;
+    public long calculateCurrentPrice() {
+        try {
+            LocalDateTime timeInLocal = LocalDateTime.parse(timeIn, formatter);
+            LocalDateTime now = LocalDateTime.now();
+            long minutesBetween = ChronoUnit.MINUTES.between(timeInLocal, now);
+            return (minutesBetween < 5) ? 0 : (minutesBetween / 5) * 2000;
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            return 0;
+        }
     }
 }

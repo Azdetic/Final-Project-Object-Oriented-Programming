@@ -2,9 +2,9 @@
 
 ## 📄 Overview
 
-This is a simple Java program to manage parking. It helps with car entry, car exit, checking parking details, and giving discounts to members. It also has a login system for security.
+This is a Java program to manage parking. It helps with car entry, car exit, checking parking details, and giving discounts to members. It also has a login system for security.
 
-This program is the **final project** created by:
+This program was created by:
 
 - 👤 **Yudho**
 - 👤 **Wira**
@@ -16,76 +16,84 @@ This program is the **final project** created by:
 
 ### 1. 🔐 **Login**
 
-- Login required to use the system.
-- Default login:
+- You must log in to use the system.
+- Default login details:
   - **Username:** `admin`
   - **Password:** `admin`
+- You must enter your balance after logging in.
 
 ### 2. 🚘 **Car Entry**
 
-- Add cars to the parking lot by entering:
+- Add a car to the parking lot by entering:
   - Plate number
   - Car color
   - Car brand
-- Records the time the car entered.
+- The system will save the time the car enters.
+- The system will not allow duplicate plate numbers.
+- If the parking lot is full, you cannot add more cars.
 
 ### 3. 🏁 **Car Exit**
 
-- Calculate parking fees based on how long the car was parked.
-- Discounts for members (50% off).
-- Removes the car from the parking list after payment.
+- Parking fees are based on the time the car was parked:
+  - Free if parked for less than 5 minutes.
+  - IDR 2,000 for every 5 minutes after the first 5 minutes.
+- Members get a 50% discount.
+- Pay with or without a member discount.
+- The system removes the car after payment.
 
 ### 4. 📋 **Parking Details**
 
-- See a list of parked cars, including:
+- View a list of all parked cars:
   - Plate number
   - Car color and brand
-  - Time the car entered
-  - Current parking fee
+  - Entry time
+  - Parking fee and member discount fee
 
 ### 5. 🧑‍🤝‍🧑 **Member Management**
 
-- Add new members.
+- Register new members using their phone number and name.
+- Check if a phone number is linked to a member.
 - View all members.
-- Check if a person is a member.
+- Delete members.
 
 ---
 
-## 📂 Main Files
+## 📂 Main Files and What They Do
 
 ### 1. `Main.java`
-
-- 🚀 Starts the program.
-- Opens the login screen.
+- Starts the program.
+- Opens the login menu.
 
 ### 2. `LoginMenu.java`
-
-- 🔑 Handles login for users.
-- If login is correct, opens the main menu.
+- Handles user login.
+- Asks for your balance after logging in.
 
 ### 3. `DetailsMenu.java`
-
-- 🏠 The main menu for choosing options:
+- Main menu where you can choose:
   - Car Entry
   - Car Exit
   - Parking Details
   - Member Management
 
-### 4. `CarInMenu.java`
+### 4. `Car.java`
+- Stores car details like plate number, color, brand, and entry time.
 
-- 🚙 Handles adding cars to the parking lot.
+### 5. `CarInMenu.java`
+- Manages car entry:
+  - Checks for duplicate or invalid input.
 
-### 5. `CarOutMenu.java`
+### 6. `CarOutMenu.java`
+- Manages car exit:
+  - Calculates fees.
+  - Handles payments with or without member discounts.
 
-- 🛑 Handles removing cars and calculating fees.
-
-### 6. `DetailsParking.java`
-
-- 🅿️ Keeps the list of parked cars.
+### 7. `DetailsParking.java`
+- Keeps the list of parked cars.
+- Checks if the parking lot is full.
 - Calculates parking fees.
 
-### 7. `MemberDataMenu.java`
-
-- 📇 Adds and checks members.
-
----
+### 8. `MemberDataMenu.java`
+- Manages members:
+  - Register new members
+  - Delete members
+  - Check or view member details
